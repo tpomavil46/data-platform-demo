@@ -40,6 +40,7 @@ graph LR
     style G fill:#2196F3
     style H fill:#FF5722
     style I fill:#673AB7
+```
 
 **Data Flow:**
 1. Python producer generates synthetic user events → Kafka topic
