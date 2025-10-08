@@ -1,0 +1,12 @@
+dbt_project:
+  outputs:
+    dev:
+      dbname: data_platform_demo
+      host: 172.21.0.1
+      pass: demo_user_passwd
+      port: 5432
+      schema: streaming
+      threads: 4
+      type: postgres
+      user: demo_user
+  target: dev
