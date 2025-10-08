@@ -14,7 +14,10 @@ This demonstration leverages the following technologies in a custom integration:
 
 - **Apache Kafka**: Event streaming platform for real-time data ingestion
 - **PostgreSQL**: Relational database for persistent storage and analytics
+- **Apache Airflow**: Workflow orchestration engine for scheduling and monitoring dbt transformations
+- **Trino**: Distributed SQL query engine for high-performance analytics across data sources
 - **dbt (Data Build Tool)**: SQL-based data transformation framework
+- **Apache Superset**: Modern business intelligence and data visualization platform
 - **Python**: Custom stream processing and orchestration
 - **Homegrown Infrastructure**: Custom deployment and configuration management
 
@@ -23,20 +26,32 @@ This demonstration leverages the following technologies in a custom integration:
 The platform implements a complete streaming data pipeline with the following components:
 
 ```
-[Kafka Producer] -> [Kafka] -> [Consumer Service] -> [PostgreSQL] -> [dbt Models]
+[Kafka Producer] -> [Kafka] -> [Consumer Service] -> [PostgreSQL]
+                                                           |
+                                                           v
+                                      [Airflow] -> [dbt Models] <- [Trino] <- [Superset]
+                                      (1 min)           |              ^
+                                                        v              |
+                                                  [Analytics Tables] --+
 ```
 
 ### Components
 
 1. **Kafka Producer** (`kafka_producer/`): Generates synthetic user event data and publishes to Kafka topics
 2. **Stream Consumer** (`flink_jobs/`): Consumes events from Kafka and performs real-time aggregations into PostgreSQL
-3. **dbt Analytics** (`dbt_project/`): Transforms raw streaming data into analytics-ready models
+3. **Apache Airflow**: Orchestrates dbt transformations on a 1-minute schedule, ensuring near-real-time analytics updates
+4. **dbt Analytics** (`dbt_project/`): Transforms raw streaming data into analytics-ready models
+5. **Trino**: Provides high-performance SQL query interface for interactive analytics and ad-hoc exploration
+6. **Apache Superset**: Business intelligence platform for creating dashboards and visualizations connected to both PostgreSQL and Trino
 
 ## Prerequisites
 
 - Python 3.12+
 - Apache Kafka 2.x+ (running on localhost:9092)
 - PostgreSQL 12+ (with a database and schema configured)
+- Apache Airflow 2.x+ (configured with DAGs for dbt orchestration)
+- Trino (configured with PostgreSQL connector)
+- Apache Superset (configured with PostgreSQL and Trino database connections)
 - pip and virtualenv
 
 ## Project Structure
