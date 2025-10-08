@@ -23,7 +23,7 @@ A production-grade streaming data platform demonstrating end-to-end data enginee
 ```mermaid
 graph LR
     A[Kafka Producer<br/>Python] --> B[Kafka<br/>Topic]
-    B --> C[Consumer<br/>Python]
+    B --> C[Consumer<br/>Flink]
     C --> D[PostgreSQL<br/>Raw Data]
     D --> E[Airflow<br/>Every 1 min]
     E --> F[dbt Models<br/>Transforming]
