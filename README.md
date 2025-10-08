@@ -20,34 +20,26 @@ A production-grade streaming data platform demonstrating end-to-end data enginee
 ---
 
 ## Architecture
-
-\`\`\`
-┌─────────────────┐      ┌─────────┐      ┌──────────────┐      ┌────────────┐
-│ Kafka Producer  │─────▶│  Kafka  │─────▶│   Consumer   │─────▶│ PostgreSQL │
-│  (Python)       │      │  Topic  │      │   (Python)   │      │  (Raw Data)│
-└─────────────────┘      └─────────┘      └──────────────┘      └─────┬──────┘
-                                                                        │
-                                                                        │
-                         ┌──────────────────────────────────────────────┘
-                         │
-                         ▼
-                  ┌──────────────┐
-                  │   Airflow    │
-                  │ (Every 1 min)│
-                  └──────┬───────┘
-                         │
-                         ▼
-                  ┌──────────────┐      ┌─────────┐      ┌──────────┐
-                  │  dbt Models  │─────▶│  Trino  │◀─────│ Superset │
-                  │(Transforming)│      │(Querying)│      │Dashboard │
-                  └──────┬───────┘      └─────────┘      └──────────┘
-                         │
-                         ▼
-                  ┌──────────────┐
-                  │  PostgreSQL  │
-                  │(Analytics DB)│
-                  └──────────────┘
-\`\`\`
+```mermaid
+graph LR
+    A[Kafka Producer<br/>Python] --> B[Kafka<br/>Topic]
+    B --> C[Consumer<br/>Python]
+    C --> D[PostgreSQL<br/>Raw Data]
+    D --> E[Airflow<br/>Every 1 min]
+    E --> F[dbt Models<br/>Transforming]
+    F --> G[PostgreSQL<br/>Analytics DB]
+    G --> H[Trino<br/>Querying]
+    H --> I[Superset<br/>Dashboard]
+    
+    style A fill:#4CAF50
+    style B fill:#FF9800
+    style C fill:#4CAF50
+    style D fill:#2196F3
+    style E fill:#9C27B0
+    style F fill:#00BCD4
+    style G fill:#2196F3
+    style H fill:#FF5722
+    style I fill:#673AB7
 
 **Data Flow:**
 1. Python producer generates synthetic user events → Kafka topic
@@ -61,11 +53,11 @@ A production-grade streaming data platform demonstrating end-to-end data enginee
 
 ## Key Features
 
-✅ **Real-time processing** - Events appear in dashboard within 60 seconds  
-✅ **Automated orchestration** - Airflow manages dbt transformations on schedule  
-✅ **Separation of compute/storage** - Trino queries data without ETL  
-✅ **Production patterns** - UPSERT logic, idempotent writes, error handling  
-✅ **Scalable architecture** - Horizontally scalable Kafka consumers
+**Real-time processing** - Events appear in dashboard within 60 seconds  
+**Automated orchestration** - Airflow manages dbt transformations on schedule  
+**Separation of compute/storage** - Trino queries data without ETL  
+**Production patterns** - UPSERT logic, idempotent writes, error handling  
+**Scalable architecture** - Horizontally scalable Kafka consumers
 
 ---
 
