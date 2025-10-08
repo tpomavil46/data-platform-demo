@@ -322,13 +322,7 @@ Core dependencies managed in `requirements.txt`:
 
 ## Future Enhancements Under Consideration
 
-Planned improvements to this demonstration project:
-
 - [ ] **Data Quality Framework**: Implement data quality checks and validation using Great Expectations or similar tools
-- [ ] **Containerization**: Containerize components with Docker and orchestrate with Kubernetes for improved portability and scalability
-- [ ] **Schema Evolution**: Add Confluent Schema Registry for Avro/Protobuf schema management and evolution
-- [ ] **Advanced Analytics**: Expand dbt models to include more complex transformations, window functions, and statistical aggregations
-- [ ] **Real-time Dashboards**: Build comprehensive Superset dashboards showcasing real-time metrics and KPIs
 
 Note: Infrastructure as code (Terraform), monitoring/observability platforms, and Change Data Capture (CDC) patterns are being developed as separate projects and demonstrations.
 
