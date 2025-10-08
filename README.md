@@ -20,27 +20,21 @@ A production-grade streaming data platform demonstrating end-to-end data enginee
 ---
 
 ## Architecture
-```mermaid
-graph LR
-    A[Kafka Producer<br/>Python] --> B[Kafka<br/>Topic]
-    B --> C[Consumer<br/>Flink]
-    C --> D[PostgreSQL<br/>Raw Data]
-    D --> E[Airflow<br/>Every 1 min]
-    E --> F[dbt Models<br/>Transforming]
-    F --> G[PostgreSQL<br/>Analytics DB]
-    G --> H[Trino<br/>Querying]
-    H --> I[Superset<br/>Dashboard]
-    
-    style A fill:#4CAF50
-    style B fill:#FF9800
-    style C fill:#4CAF50
-    style D fill:#2196F3
-    style E fill:#9C27B0
-    style F fill:#00BCD4
-    style G fill:#2196F3
-    style H fill:#FF5722
-    style I fill:#673AB7
-```
+'''
+Kafka Producer (Python)
+↓
+Kafka Topic
+↓
+Stream Consumer (Python)
+↓
+PostgreSQL (Raw Data)
+↓
+Airflow (Every 1 min) → dbt Models → PostgreSQL (Analytics DB)
+↓
+Trino (Query Engine)
+↓
+Apache Superset (Dashboard & Visualization)
+'''
 
 **Data Flow:**
 1. Python producer generates synthetic user events → Kafka topic
