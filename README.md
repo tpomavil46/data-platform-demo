@@ -329,8 +329,8 @@ The focus is on showcasing:
 
 For questions about this project or data engineering opportunities:
 
-- **Portfolio:** [your-website.com](https://aws.tpomaville.com)
-- **LinkedIn:** [your-linkedin](https://www.linkedin.com/in/timothy-pomaville)
+- **Portfolio:** [https://aws.tpomaville.com]
+- **LinkedIn:** [https://www.linkedin.com/in/timothy-pomaville]
 
 ---
 
