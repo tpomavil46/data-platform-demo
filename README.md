@@ -20,21 +20,20 @@ A production-grade streaming data platform demonstrating end-to-end data enginee
 ---
 
 ## Architecture
-'''
-Kafka Producer (Python)
-↓
-Kafka Topic
-↓
-Stream Consumer (Python)
-↓
-PostgreSQL (Raw Data)
-↓
-Airflow (Every 1 min) → dbt Models → PostgreSQL (Analytics DB)
-↓
-Trino (Query Engine)
-↓
-Apache Superset (Dashboard & Visualization)
-'''
+
+    Kafka Producer (Python) 
+        ↓
+    Kafka Topic
+        ↓
+    Stream Consumer (Python)
+        ↓
+    PostgreSQL (Raw Data)
+        ↓
+    Airflow (Every 1 min) → dbt Models → PostgreSQL (Analytics DB)
+        ↓
+    Trino (Query Engine)
+        ↓
+    Apache Superset (Dashboard & Visualization)
 
 **Data Flow:**
 1. Python producer generates synthetic user events → Kafka topic
