@@ -44,12 +44,12 @@ consumer = KafkaConsumer(
 print("Consuming messages and writing to Postgres...")
 
 for message in consumer:
-    print(f"DEBUG: Received message from Kafka: {message.value}")
+    # print(f"DEBUG: Received message from Kafka: {message.value}")
     event = message.value
     user_id = event['user_id']
     event_type = event['event_type']
     
-    print(f"DEBUG: About to insert user_id={user_id}, event_type={event_type}")
+    # print(f"DEBUG: About to insert user_id={user_id}, event_type={event_type}")
     
     # Upsert into Postgres
     cur.execute("""
@@ -59,7 +59,7 @@ for message in consumer:
         DO UPDATE SET event_count = streaming.user_events.event_count + 1
     """, (user_id, event_type))
     
-    print(f"DEBUG: Executed query")
+    # print(f"DEBUG: Executed query")
     conn.commit()
-    print(f"DEBUG: Committed to DB")
+    # print(f"DEBUG: Committed to DB")
     print(f"Processed: user {user_id}, event {event_type}")

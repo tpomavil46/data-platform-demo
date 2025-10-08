@@ -320,31 +320,15 @@ Core dependencies managed in `requirements.txt`:
 - **psycopg2-binary**: PostgreSQL driver for Python
 - **python-dotenv**: Environment variable management
 
-## Contributing
+## Future Enhancements Under Consideration
 
-When contributing to this project:
+Planned improvements to this demonstration project:
 
-1. Follow SOLID principles and DRY methodology
-2. Use Google-style docstrings for all functions and classes
-3. Write tests for new functionality (TDD approach)
-4. Maintain loose coupling between components
-5. Consider the "ilities": scalability, reliability, maintainability, etc.
+- [ ] **Data Quality Framework**: Implement data quality checks and validation using Great Expectations or similar tools
+- [ ] **Containerization**: Containerize components with Docker and orchestrate with Kubernetes for improved portability and scalability
+- [ ] **Schema Evolution**: Add Confluent Schema Registry for Avro/Protobuf schema management and evolution
+- [ ] **Advanced Analytics**: Expand dbt models to include more complex transformations, window functions, and statistical aggregations
+- [ ] **Real-time Dashboards**: Build comprehensive Superset dashboards showcasing real-time metrics and KPIs
 
-## License
+Note: Infrastructure as code (Terraform), monitoring/observability platforms, and Change Data Capture (CDC) patterns are being developed as separate projects and demonstrations.
 
-[Specify your license here]
-
-## Future Enhancements
-
-- [ ] Add Apache Flink for more complex stream processing
-- [ ] Implement Terraform for infrastructure as code
-- [ ] Add monitoring with Prometheus and Grafana
-- [ ] Implement data quality checks with Great Expectations
-- [ ] Add CI/CD pipeline for dbt models
-- [ ] Containerize with Docker and orchestrate with Kubernetes
-- [ ] Add schema registry for Avro/Protobuf support
-- [ ] Implement CDC (Change Data Capture) patterns
-
-## Contact
-
-[Add your contact information or team details]
