@@ -26,7 +26,7 @@ This demonstration leverages the following technologies in a custom integration:
 The platform implements a complete streaming data pipeline with the following components:
 
 ```
-[Kafka Producer] -> [Kafka] -> [Consumer Service] -> [PostgreSQL]
+[Kafka Producer] -> [Kafka] -> [Flink Consumer Service] -> [PostgreSQL]
                                                            |
                                                            v
                                       [Airflow] -> [dbt Models] <- [Trino] <- [Superset]
